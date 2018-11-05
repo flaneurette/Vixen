@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://vixen/skin/vixen.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://vixen/locale/vixen.dtd">
+<overlay id="vixenOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script type="application/x-javascript" src="chrome://vixen/content/init.js"></script> 
+  	<menupopup id="menu_ToolsPopup">
+    <menuitem id="vixen-hello" label="&consolerun.label;" oncommand="launchvixen();" insertbefore="prefSep" accesskey="V"/>
+  </menupopup>
+</overlay>

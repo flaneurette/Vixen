@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://vixen/skin/vixen.css" type="text/css"?>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onunload="vixen.shutdown();" title="Vixen" buttons="accept" width="950" height="450" persist="screenX screenY width height sizemode" id="vixenwindow" xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<script type="application/x-javascript" src="chrome://vixen/content/arrays.js"></script>
+    <script type="application/x-javascript" src="chrome://vixen/content/vixen.js"></script>
+    <keyset>
+        <key modifiers="accel" key="O" oncommand="vixen.commands('O');" />
+        <key modifiers="accel" key="X" oncommand="vixen.removeTab();" />
+        <key modifiers="accel" key="N" oncommand="vixen.commands('N');" />
+        <key modifiers="accel" key="T" oncommand="vixen.commands('N');" />
+        <key modifiers="accel" key="S" oncommand="vixen.commands('S');" />
+        <key modifiers="accel" key="F" oncommand="vixen.commands('F');" />
+        <key keycode="VK_ESCAPE" oncommand="" />
+    </keyset>
+    <vbox flex="0">
+        <menubar id="vixenmainmenu">
+            <menu id="vixen-action-menu" label="File">
+                <menupopup id="action-popup" class="vixen-popup-menu" style="width:200px;text-align:justify;" flex="1">
+                    <menuitem label="New" acceltext="Ctrl+N" oncommand="vixen.commands('N');" flex="1"/>
+                    <menuitem label="Open File" acceltext="Ctrl+O" oncommand="vixen.commands('O');" />
+                    <menuitem label="Save" acceltext="Ctrl+S" oncommand="vixen.commands('S');" />
+                    <!-- <menuitem label="Save all" disabled="true" oncommand="vixen.commands('SA');" /> -->
+                    <menuitem label="Close" acceltext="Ctrl+X" oncommand="vixen.removeTab();" />
+                    <menuitem label="Close All" acceltext="" oncommand="vixen.commands('Q');" />
+                    <menuseparator />
+                    <menuitem label="Quit" oncommand="vixen.shutdown();" />
+                </menupopup>
+            </menu>
+            <menu id="edit-menu" label="Edit"> 
+                <menupopup id="edit-popup" class="vixen-popup-menu">
+               <menuitem label="Copy document" acceltext="Ctrl+C" oncommand="vixen.windowaction('copy');" />
+               <menuitem label="Paste" acceltext="Ctrl+V" oncommand="vixen.windowaction('paste');" />
+               <!-- <menuitem label="Select All" acceltext="Ctrl+A" oncommand="vixen.windowaction('selectall');" /> -->
+                  <menuseparator />
+               <menuitem label="Prettify" oncommand="vixen.windowaction('prettify');" disabled="true"/>
+               <menuitem label="Remove empty lines" oncommand="vixen.windowaction('emptylines');" disabled="true"/>
+               <menuitem label="Tabs to spaces" oncommand="vixen.windowaction('tabtospace');" disabled="true"/>
+                  
+              </menupopup>
+            </menu>
+            <menu id="edit-menu" label="View">
+                <menupopup id="edit-popup" class="vixen-popup-menu">
+                <menuitem label="Show design" acceltext="F10" oncommand="vixen.windowaction('showdesign');" />
+                <menuitem label="Full screen" acceltext="F11" oncommand="vixen.resizeWindow();" />
+                <menuitem label="Hide lines"  oncommand="vixen.windowaction('hidelines');" />
+                <menuitem label="Show lines"  oncommand="vixen.windowaction('showlines');" />
+                <!-- <menuitem label="Zoom" oncommand="vixen.windowaction('zoom');" /> -->
+              </menupopup>
+            </menu>
+            <menu id="edit-menu-in" label="Insert">
+                <menupopup id="edit-popup" class="vixen-popup-menu">
+                    <menu id="new-menu-doc" label="DOCTYPE">
+                        <menupopup id="edit-popup-doc" class="vixen-popup-menu">
+                        </menupopup>
+                    </menu>
+                    <menu id="new-menu" label="HTML5">
+                        <menupopup id="edit-popup-html5" class="vixen-popup-menu">
+                        </menupopup>
+                    </menu>
+                    <menu id="new-menu" label="HTML4">
+                        <menupopup id="edit-popup-html4" class="vixen-popup-menu">
+                        </menupopup>
+                    </menu>
+                    <menu id="new-menu" label="CSS">
+                        <menupopup id="edit-popup-css" class="vixen-popup-menu">
+                        <menu id="new-menu" label="MOZILLA">
+                        <menupopup id="edit-popup-moz-css" class="vixen-popup-menu">
+                        </menupopup>
+                    </menu>  
+                        </menupopup>
+                    </menu>
+                    <menu id="new-menu" label="Javascript">
+                        <menupopup id="edit-popup-css" class="vixen-popup-menu">
+                        <menu id="new-menu" label="jQuery">
+                        <menupopup id="edit-popup-j-query" class="vixen-popup-menu">
+                        </menupopup>
+                    </menu>  
+                        </menupopup>
+                    </menu>                  
+
+                  
+                    <menu id="new-menu" label="PHP">
+                        <menupopup id="edit-popup-php" class="vixen-popup-menu">
+                          
+                          <menu id="vixen-action-menu" label="A"><menupopup id="edit-popup-php-a" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="B"><menupopup id="edit-popup-php-b" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="C"><menupopup id="edit-popup-php-c" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="D"><menupopup id="edit-popup-php-d" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="E"><menupopup id="edit-popup-php-e" class="vixen-popup-menu"></menupopup></menu> 
+                          <menu id="vixen-action-menu" label="F"><menupopup id="edit-popup-php-f" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="G"><menupopup id="edit-popup-php-g" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="H"><menupopup id="edit-popup-php-h" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="I"><menupopup id="edit-popup-php-i" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="J"><menupopup id="edit-popup-php-j" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="K"><menupopup id="edit-popup-php-k" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="L"><menupopup id="edit-popup-php-l" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="M"><menupopup id="edit-popup-php-m" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="N"><menupopup id="edit-popup-php-n" class="vixen-popup-menu"></menupopup></menu> 
+                          <menu id="vixen-action-menu" label="O"><menupopup id="edit-popup-php-o" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="P"><menupopup id="edit-popup-php-p" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="Q"><menupopup id="edit-popup-php-q" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="R"><menupopup id="edit-popup-php-r" class="vixen-popup-menu"></menupopup></menu>                          
+                          <menu id="vixen-action-menu" label="S"><menupopup id="edit-popup-php-s" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="T"><menupopup id="edit-popup-php-t" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="U"><menupopup id="edit-popup-php-u" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="V"><menupopup id="edit-popup-php-v" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="W"><menupopup id="edit-popup-php-w" class="vixen-popup-menu"></menupopup></menu> 
+                          <menu id="vixen-action-menu" label="X"><menupopup id="edit-popup-php-x" class="vixen-popup-menu"></menupopup></menu>
+                          <menu id="vixen-action-menu" label="Z"><menupopup id="edit-popup-php-z" class="vixen-popup-menu"></menupopup></menu>                           
+                          
+                        </menupopup>
+
+                    </menu>
+                  
+                    <menu id="new-menu" label="C">
+                        <menupopup id="edit-popup-php-c-scheme" class="vixen-popup-menu">
+                        </menupopup>
+                    </menu>  
+                  
+                    <menu id="new-menu" label="XUL">
+                        <menupopup id="edit-popup-xul" class="vixen-popup-menu">
+                          
+                                <menu id="vixen-action-menu" label="Elements">
+                                    <menupopup id="edit-popup-xul-elements" class="vixen-popup-menu">
+								</menupopup>
+								</menu>
+                                 <menu id="vixen-action-menu" label="Attributes">
+                                    <menupopup id="edit-popup-xul-attributes" class="vixen-popup-menu">
+								</menupopup>
+								</menu>                         
+                                 <menu id="vixen-action-menu" label="Events">
+                                    <menupopup id="edit-popup-xul-events" class="vixen-popup-menu">
+								</menupopup>
+								</menu>   
+                          
+                        </menupopup>
+                    </menu>
+                </menupopup>
+            </menu>
+            <menu id="edit-menu" label="Plugins">
+                <menupopup id="edit-popup" class="vixen-popup-menu">
+                    <menuitem label="Converter" oncommand="" disabled="true"/>
+                    <menuitem label="Hex editor" oncommand="" disabled="true"/>
+                    <menuitem label="Calculator" oncommand="" disabled="true"/>
+                    <menuitem label="Colors" oncommand="" disabled="true"/>
+                    <menuitem label="XUL explorer" oncommand="" disabled="true"/>
+                </menupopup>
+            </menu>
+			
+			
+            <menu id="edit-menu" label="Window">
+                <menupopup id="edit-popup" class="vixen-popup-menu">
+                                <menu id="vixen-action-menu" label="Theme">
+                                    <menupopup id="action-popup" class="vixen-popup-menu">
+									<menuitem label="Default" oncommand="vixen.setTheme('default');" />
+									<menuitem label="Dreamcode" oncommand="vixen.setTheme('dreamcode');" />
+									<menuitem label="Console" oncommand="vixen.setTheme('blackwhite');" />
+									<menuitem label="Night" oncommand="vixen.setTheme('night');" />
+									<menuitem label="Monokai" oncommand="vixen.setTheme('monokai');" />
+									<menuitem label="Neat" oncommand="vixen.setTheme('neat');" />
+									<menuitem label="Elegant" oncommand="vixen.setTheme('elegant');" />
+									<menuitem label="Cobalt" oncommand="vixen.setTheme('cobalt');" />
+									<menuitem label="Eclipse" oncommand="vixen.setTheme('eclipse');" />
+									<menuitem label="Rubyblue" oncommand="vixen.setTheme('rubyblue');" />
+
+								</menupopup>
+								</menu>
+                  <menuseparator />
+                  <menuitem label="Help" oncommand="vixen.loadchrome('help');" disabled="true"/>
+                  <menuitem label="About" oncommand="vixen.loadchrome('about');" />
+                  
+                </menupopup>
+            </menu>
+			
+        </menubar>
+    </vbox>
+    <vbox flex="0">
+        <tabbox id="myTabList" selectedIndex="0" closebutton="true">
+            <tabs id="document-tabs" oncommand="vixen.refreshChrome();">
+                
+            </tabs>
+            <tabpanels style="background-color:#666;">
+                <tabpanel id="vixen-panel-0">
+                    <hbox class="hboxopentab">
+					
+                        <menu id="vixen-action-menu-mode" label="Mode:" position="after_pointer">
+                            <menupopup id="action-popup" class="vixen-popup-menu">
+                                <menuitem label="TXT" oncommand="vixen.filemode('txt');" />
+                                <menuitem label="HTML" oncommand="vixen.filemode('htmlmixed');" />
+                                <menuitem label="CSS" oncommand="vixen.filemode('css');" />
+                                <menuitem label="Javascript" oncommand="vixen.filemode('javascript');" />
+                                <menuitem label="PHP" oncommand="vixen.filemode('php');" />
+                                <menuitem label="Python" oncommand="vixen.filemode('python');" />
+                                <menuitem label="Perl" oncommand="vixen.filemode('perl');" />
+                                <menuitem label="Ruby" oncommand="vixen.filemode('ruby');" />
+                                <menuitem label="C-like" oncommand="vixen.filemode('clike');" />
+                                <menuitem label="XML" oncommand="vixen.filemode('xml');" />
+                                <menuseparator />
+                                <menu id="vixen-action-menu" label="More..." disabled="true">
+                                    <menupopup id="action-popup" class="vixen-popup-menu">
+                                        <menuitem label="Clojure" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Coffeescript" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Diff" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Gfm" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Groovy" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Haskell" oncommand="vixen.filemode('');" />
+                                        <menuitem label="HTMLembedded" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Jinja2" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Lua" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Markdown" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Ntriples" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Plsql" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Pascal" oncommand="vixen.filemode('');" />
+                                        <menuitem label="R" oncommand="vixen.filemode('');" />
+                                        <menuitem label="RPM" oncommand="vixen.filemode('');" />
+                                        <menuitem label="RST" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Rust" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Scheme" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Smalltalk" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Sparql" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Stex" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Tiddlywiki" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Velocity" oncommand="vixen.filemode('');" />
+                                        <menuitem label="XMLpure" oncommand="vixen.filemode('');" />
+                                        <menuitem label="Yaml" oncommand="vixen.filemode('');" />
+                                    </menupopup>
+                                </menu>
+                            </menupopup>
+                        </menu>
+						
+                    </hbox>
+                    <spacer flex="1" />
+                    <hbox align="right">
+                        <image src="chrome://vixen/skin/close-tab.png" class="vixen-close-button" label="Close" flex="0" onclick="vixen.commands('X');" oncommand="vixen.commands('X');" />
+                    </hbox>
+                </tabpanel>
+            </tabpanels>
+        </tabbox>
+    </vbox>
+    <vbox flex="1" id="fp-vbox-editor" style="background-color:#666;">
+  
+    </vbox>
+    <splitter collapse="after" id="wysiwyg-splitter">
+        <spring flex="1" />
+        <grippy />
+        <spring flex="1" />
+    </splitter>
+    <box flex="0" id="fp-vbox-wysiwyg">
+    </box>
+    <vbox flex="0">
+        <tabbox id="vixen-tabs-menu-footer" selectedIndex="0" closebutton="true">
+            <tabs>
+                <tab label="File browser" />
+                <tab label="Search" />
+                <tab label="Console" />
+				<label flex="200"/>
+				<button label="Sync design" flex="1" class="stylebutton-menu" oncommand="vixen.syncDesign();"></button>
+				<button label="Hide panel" flex="1" class="stylebutton-menu" oncommand="vixen.closeSplit();"></button>
+            </tabs>
+            <tabpanels flex="3">
+              
+
+                <tabpanel flex="5">
+                    <groupbox flex="1">
+                                <vbox flex="8">
+<tree rows="9" id="vixen-root-browser" style="width:160px;" hidecolumnpicker="true"  ondblclick="vixen.filebrowser('movedir');">
+    
+  <treecols>                                            
+      <treecol id="vixen-root-browser-file" label="File" flex="4" persist="width ordinal hidden" primary="true" class="tree" />
+      <treecol id="vixen-root-browser-size" label="Size" flex="1" persist="width ordinal hidden" primary="true" class="tree" />
+      <treecol id="vixen-root-browser-modified" label="Modified" flex="1" persist="width ordinal hidden" primary="true" class="tree" />
+      <treecol id="vixen-root-browser-permissions" label="Permissions" flex="1" persist="width ordinal hidden" primary="true" class="tree" />
+      <treecol id="vixen-root-browser-hidden" label="Hidden" flex="1" persist="width ordinal hidden" primary="true" class="tree" />
+    </treecols>
+  <treechildren id="vix-root-dir"></treechildren>
+</tree>
+                                </vbox>
+					</groupbox>				
+					
+                </tabpanel>
+                         
+              
+                <tabpanel flex="5">
+                    <groupbox>
+                        <vbox flex="1">
+                            <textbox id="js-searchbox" class="js-console-box" value="" multiline="true" rows="2" flex="2" />
+                          <textbox id="js-replacebox" class="js-console-box" value="" multiline="true" rows="2" flex="2" tooltiptext="Replace" />
+                            <hbox>
+                                <vbox flex="1">
+                                    <checkbox label="In current file" flex="1" id="search-current" checked="true"></checkbox>
+                                </vbox>
+                                <vbox flex="1">
+                                    <checkbox label="In open files" flex="1" id="search-openfiles"></checkbox>
+                                </vbox>
+                                 <vbox flex="1">
+                                    <button label="In directory" flex="1"  class="stylebutton" oncommand="vixen.searchtools('findfiles');"></button>
+                                </vbox>
+                                
+
+                            </hbox>
+                            <hbox>
+                                <vbox flex="1">
+                                    <checkbox label="Regular expression" flex="1" id="search-regxp"></checkbox>
+                                </vbox>
+                               <!-- <vbox flex="0">
+                                    <checkbox label="Recursive" flex="1" id="search-recursive"></checkbox>
+                                </vbox> -->
+                                
+                            </hbox>
+                           <hbox>
+                              
+                                <vbox>
+                                    <button label="Replace" flex="0" class="stylebutton" oncommand="vixen.searchtools('replace');"></button>
+                                </vbox>
+                                 <vbox>
+                                    <button label="Search" flex="0" class="stylebutton" oncommand="vixen.searchtools('find');"></button>
+                                </vbox>
+                            </hbox>
+                        
+                        </vbox>
+                    </groupbox>
+                  <splitter flex="0" class="cplussplit"></splitter>
+                    <groupbox flex="10">
+                        <vbox>
+						<tree rows="9" id="vixen-root-search" style="width:160px;"  ondblclick="vixen.searchHighlight();">
+						<treecols>
+							 <treecol id="interfacelistvalue" label="Line" flex="0" fixed="false" class="tree" />
+							 <treecol id="interfacelistvalue" label="File" flex="7"  fixed="false" class="tree" />
+							 <treecol id="interfacelistvalue" label="String" flex="10" fixed="false" class="tree" />
+						</treecols>
+                                <treechildren id="vix-search-children">
+								</treechildren>
+                            </tree>
+                        </vbox>
+                    </groupbox>
+                </tabpanel>
+                <tabpanel flex="3">
+
+                   <groupbox>
+                        <vbox id="js-console-vbox">
+                          <hbox>
+                            <textbox id="js-evl-string" class="js-console-box" value="" multiline="true" rows="5" flex="5" />
+                          </hbox>
+                          <hbox>
+                            <label value="Evaluate javascript commands." flex="1"/><button label="Evaluate" flex="0" class="stylebutton-fx-width" oncommand="vixen.runcode();"></button>
+                          </hbox>
+                          <hbox>
+							<textbox id="js-evl-result" class="js-console-box-result" value="" multiline="true" rows="3" flex="5" />
+                          </hbox>
+                        </vbox>
+                    </groupbox> 
+                  <splitter flex="0" class="cplussplit"></splitter>
+                       <groupbox flex="1">
+                        <vbox>
+                           <richlistbox id="js-console">
+                              <richlistitem></richlistitem>
+                           </richlistbox>
+                        </vbox>
+                    </groupbox>  
+                </tabpanel>
+            </tabpanels>
+        </tabbox>
+    </vbox>
+    <splitter collapse="before" id="vix-last-splitter" state="open">
+        <spring flex="1" />
+        <grippy />
+        <spring flex="1" />
+    </splitter>
+    <!-- <browser id="content" type="content-primary" name="content" src="about:blank" flex="1" context="viewSourceContextMenu" showcaret="true" tooltip="aHTMLTooltip"/> -->
+    <findbar id="FindToolbar" browserid="content" />
+     <iframe name="" id="js-evl-frame" src="about:blank" type="chrome" height="1" collapsed="true" />
+    <vbox flex="0">
+        <hbox class="vixen-document-status">
+            <label flex="3" id="vixen-filepath" value="" />
+            <label flex="3" id="vixen-fileinfo" value="" />
+            <label flex="0" id="vixen-memory" value="" /><label flex="0" id="vixen-area-data" value="Lines: 0, Chr: 0" />
+            <progressmeter id="vixen-progress" flex="0" />
+        </hbox>
+    </vbox>
+  <script>
+  try {
+  vixen.startup();
+  } catch(e) {}
+</script>
+</window> 

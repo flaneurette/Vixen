@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://vixen/skin/vixen.css" type="text/css"?>
+<dialog title="About Vixen" id="vixen-dialog" 
+	orient="vertical"
+	onload="sizeToContent();vixenDialogResize();"
+	width="330"
+	buttons="accept"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://vixen/content/dialogs/resize.js"/>
+  <groupbox align="center" orient="horizontal" width="1" flex="1">
+    <vbox>
+      <div>
+	<image id="logo" src="chrome://vixen/skin/vixen-logo.png" class="text-link" tooltiptext="Visit Extension Home Page" onclick="window.open('http://www.mozilla.com')"/>
+      </div>
+      <separator class="thin"/>
+      <text value="Version 2.0.7 (Beta)"/>
+      <separator class="thin"/>
+
+      <columns>
+	<column  width="350">
+      <description>
+        Vixen is a sleak, lightweight open source software editor aimed at rapid (web) development from within Mozilla Firefox. Vixen has a intuitive user interface, is tiny and fast, is easy to use and can compete with commercial editors. It's integration into Firefox will give you unique features and quick interaction with what you are working on. 
+	  </description>
+        </column>
+      </columns>
+
+      <separator class="thin"/>
+      <text value="Created by" style="font-weight: bold;"/>
+      <columns>
+	<column width="300">
+      <text value="Sasha van den Heetkamp"/>
+	</column>
+      </columns>
+         
+    <separator class="thin"/>
+      <text value="Programming, UI, Graphics" style="font-weight: bold;"/>
+      <columns>
+	<column width="300">
+      <text value="Sasha van den Heetkamp"/>
+	</column>
+   </columns>       
+        <separator class="thin"/>
+      <text value="Codemirror" style="font-weight: bold;"/>
+      <columns>
+	<column width="300">
+      <text value="Marijn Haverbeke"/>
+	</column>
+   </columns>   
+     <separator class="thin"/>
+      <text value="Graphic pixel artist" style="font-weight: bold;"/>
+      <columns>
+	<column width="300">
+      <text value="Cecilia Elnith"/>
+	</column>
+   </columns>    
+           
+
+      <separator class="thin"/>
+      <text value="Homepage" style="font-weight: bold;"/>
+      <text value="https://addons.mozilla.org/en-US/firefox/addon/Vixen"
+            class="url"
+            onclick="window.open('https://addons.mozilla.org/en-US/firefox/addon/vixen');"/>
+      <separator class="thin"/>
+
+    </vbox>
+  </groupbox>
+</dialog>

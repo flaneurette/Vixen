@@ -1,0 +1,31 @@
+/* blackwhite theme */
+
+
+.cm-s-blackwhite {background: #000; color: lime;
+font-size:11px;
+font-family:"Lucida Console",Terminal, Arial;
+}
+.cm-s-blackwhite span.CodeMirror-selected {background: white !important; color:#000 !important;}
+.cm-s-blackwhite .CodeMirror-gutter {background: #222; border-right: 0px;}
+.cm-s-blackwhite .CodeMirror-gutter-text {color: lime;}
+.cm-s-blackwhite .CodeMirror-cursor {border-left: 1px solid #666 !important;}
+
+.cm-s-blackwhite span.cm-comment {color: lime;}
+.cm-s-blackwhite span.cm-atom {color: lime;}
+.cm-s-blackwhite span.cm-number {color: lime;}
+
+.cm-s-blackwhite span.cm-property, .cm-s-blackwhite span.cm-attribute {color: lime;}
+.cm-s-blackwhite span.cm-keyword {color: lime;}
+.cm-s-blackwhite span.cm-string {color: lime;}
+.cm-s-blackwhite span.cm-variable {color: lime;}
+.cm-s-blackwhite span.cm-variable-2 {color: lime;}
+.cm-s-blackwhite span.cm-def {color: lime;}
+.cm-s-blackwhite span.cm-error {background:red; color: lime;}
+.cm-s-blackwhite span.cm-bracket {color: lime;}
+.cm-s-blackwhite span.cm-tag {color: lime;}
+.cm-s-blackwhite span.cm-link {color: lime;}
+
+.cm-s-blackwhite .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}

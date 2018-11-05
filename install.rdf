@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+    <Description about="urn:mozilla:install-manifest">
+
+        <em:id>{87b1d836-ebb3-4b3c-8405-43d01693c2bb}</em:id>
+        <em:name>Vixen</em:name>
+        <em:type>2</em:type>
+        <em:version>2.0.8b.10.05.2012</em:version>
+        <em:description>Firefox code editor</em:description>
+        <em:creator>Sasha van den Heetkamp</em:creator>
+        <em:homepageURL>http://sun.io</em:homepageURL>
+        <em:iconURL>chrome://vixen/skin/icon64.png</em:iconURL>
+
+        <em:targetApplication>
+            <Description>
+                <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+                <em:minVersion>10.0</em:minVersion>
+                <em:maxVersion>12.*</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+
+    </Description> 
+
+</RDF>

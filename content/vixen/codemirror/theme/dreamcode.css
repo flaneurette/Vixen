@@ -1,0 +1,31 @@
+
+.cm-s-dreamcode { background: #fff; color: #222; 
+  font-family: monospace;
+  font-size: 10pt; }
+.cm-s-dreamcode span.CodeMirror-selected { background: blue !important; color:#fff !important;  }
+
+.cm-s-dreamcode span.cm-comment {   color: #FF9900;font-stretch: condensed; }
+.cm-s-dreamcode span.cm-atom { color: red; }
+.cm-s-dreamcode span.cm-keyword { color: blue; }
+.cm-s-dreamcode span.cm-function { color:#0000FF;}
+.cm-s-dreamcode span.cm-string { color: #cb0000; }
+.cm-s-dreamcode span.cm-meta { color: red; font-weight:bold; }
+.cm-s-dreamcode span.cm-error { color: red; }
+.cm-s-dreamcode span.cm-bracket { color: #CC0000; }
+.cm-s-dreamcode span.cm-builtin, .cm-s-dreamcode span.cm-special { color: red; }
+.cm-s-dreamcode span.cm-link { color: blue; }
+.cm-s-dreamcode span.cm-quoted { color: green; }
+
+.cm-s-dreamcode span.cm-number {color: blue; }
+.cm-s-dreamcode span.cm-tag {color: #059da0;}
+.cm-s-dreamcode span.cm-variable {color: blue;}
+.cm-s-dreamcode span.cm-variable-2 {color: black;}
+.cm-s-dreamcode span.cm-variable-3 {color: #059da0;}
+.cm-s-dreamcode span.cm-variable-3 span.cm-string {color: #059da0;}
+.cm-s-dreamcode  span.cm-attribute {color: #059da0;}
+.cm-s-dreamcode  span.cm-attribute-2 {color: #059da0;}
+.cm-s-dreamcode  span.cm-header {color: orange;}
+.cm-s-dreamcode  span.cm-quote {color: orange;}
+.cm-s-dreamcode span.cm-property {color: purple;}
+.cm-s-dreamcode span.cm-operator {color: blue; }
+.cm-s-dreamcode span.cm-string-2 {color: green; }

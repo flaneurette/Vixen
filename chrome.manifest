@@ -1,0 +1,10 @@
+content Vixen content/vixen/
+
+overlay chrome://browser/content/browser.xul chrome://Vixen/content/init.xul
+skin Vixen classic/1.0 skin/classic/vixen/
+style chrome://browser/content/browser.xul chrome://vixen/skin/vixen.css
+style chrome://global/content/customizeToolbar.xul chrome://Vixen/skin/vixen.css
+
+locale Vixen en-US locale/en-US/
+locale Vixen en-GB locale/en-GB/
+locale Vixen nl-NL locale/nl-NL/

@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+<script src="lib/codemirror.js"></script>
+<script src="lib/util/runmode.js"></script>
+<script src="lib/util/simple-hint.js"></script>
+<script src="mode/javascript/javascript.js"></script>
+<script src="mode/php/php.js"></script>
+<script src="mode/clike/clike.js"></script>
+<script src="mode/css/css.js"></script>
+<script src="mode/xml/xml.js"></script>
+<script src="mode/perl/perl.js"></script>
+<script src="mode/ruby/ruby.js"></script>
+<script src="mode/python/python.js"></script>
+<script src="mode/xml/xml.js"></script>
+<script src="mode/htmlmixed/htmlmixed.js"></script>
+<link rel="stylesheet" href="theme/neat.css">
+<link rel="stylesheet" href="theme/elegant.css">
+<link rel="stylesheet" href="theme/night.css">
+<link rel="stylesheet" href="theme/monokai.css">
+<link rel="stylesheet" href="theme/cobalt.css">
+<link rel="stylesheet" href="theme/eclipse.css">
+<link rel="stylesheet" href="theme/rubyblue.css">
+<link rel="stylesheet" href="theme/dreamcode.css">
+<link rel="stylesheet" href="theme/blackwhite.css">
+<link rel="stylesheet" href="lib/codemirror.css">
+<link rel="stylesheet" href="lib/util/simple-hint.css">
+	
+<style type="text/css">
+	
+	html, body { 
+		
+	margin: 0; padding: 0; 
+		
+	}
+    
+	html, body, #cpl, #cpl textarea { 
+		
+	height: 100%; 
+		
+	}
+
+	.CodeMirror {
+	
+	border: 1px solid #eee;
+	        display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            margin: 0;
+            padding: 0;
+            border: 0px solid #BBBBBB;
+	}
+	
+	#code {
+		height:450px;
+		width:940px;
+		min-width:940px;
+		min-height:450px;
+	}
+	
+	</style>
+  </head>
+<body>
+<div id="cpl"><textarea id="code" name="code"></textarea></div>
+
+<script>
+
+var vixTop = 0;
+var vixLeft = 0;
+var tickchange = 0;
+
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+       lineNumbers: true,
+	    onChange: function (n) {
+             if('scrollTop' in editor.getScrollerElement()) {
+                scroller = editor.getScrollerElement();
+                 window.vixTop = scroller.scrollTop;
+                 window.vixLeft = scroller.scrollLeft;
+                 procKey();
+              }
+            },
+		onFocus: function() {
+          //window.sRoll();
+		},
+		onBlur: function() {
+          //window.sRoll();
+		}
+     });
+	 
+    window.procKey = function() {
+      
+      var val = editor.getValue();
+      var lenlines = val.split("\n");
+      var lenchars = val.split("");
+      
+      window.prockeylenlines = lenlines.length;
+      window.prockeylenchars = lenchars.length;
+    }
+      
+     window.getAreaData = function(what) {
+       switch(what) {
+         case 'lines':
+           return window.prockeylenlines;
+         break;
+         case 'chars':
+           return window.prockeylenchars;
+         break;
+       }
+     }
+    
+	 window.sRoll = function() {
+		if ('scrollTop' in editor.getScrollerElement()) {
+			scroller = editor.getScrollerElement();
+		    var vixTop = scroller.scrollTop;
+			var vixLeft = scroller.scrollLeft;
+		  }
+	 }
+       
+    window.highline = function(line) {
+      editor.setLineClass(line, 'vix-search-result');
+    }
+         
+    window.vixfocus = function(args) {
+		editor.scrollTo(vixLeft, vixTop);
+    }
+    window.gotoline = function(args) {
+		editor.setCursor(args);
+	}
+      
+    window.setcode = function(code) {
+       editor.setValue(code);
+    }
+        
+	window.getval = function(args) {
+	   return editor.getValue();
+	}
+	
+	window.xetval = function(args) {
+		editor.setValue(args);
+		return window.getselectedmode();
+	}
+    
+    window.filemode = function(args) {
+        editor.setOption("mode", args);
+    }
+	
+    window.getselectedmode = function() {
+        return editor.getOption("mode");
+    }
+    
+	window.selectTheme = function(theme) {
+		editor.setOption("theme", theme);
+	}
+      
+    window.setValueAtCursor = function(string) {
+        var cursorPos = editor.getCursor(true);
+		editor.replaceRange(string, cursorPos);
+    }
+      
+    window.selAll = function() {
+	   editor.setSelection(0, editor.lastLine);
+    }
+	
+	window.removeLn = function() {
+		editor.setOption("lineNumbers", false);
+	}
+  
+	window.showLn = function() {
+		editor.setOption("lineNumbers", true);
+	}
+    
+      
+   window.mimemode = function (mtype) {
+	var cmode = '';
+	
+	editor.setOption("theme", 'default');
+		switch(mtype) {
+		
+		default:
+		cmode = 'text';
+		break;
+
+		case 'html':
+		case 'shtml':
+		case 'htm':
+		case 'xhtml':
+		case 'dhtml':
+		cmode = 'htmlmixed';
+		break;    
+	
+		case 'php':
+		case 'php2':
+		case 'php3':
+		case 'php4':
+		case 'php4':
+		case 'phtml':
+		case 'inc':
+		cmode = 'php';
+		editor.setOption("theme", 'dreamcode');
+		break;
+		
+		case 'js':
+		case 'jsx':
+		cmode = 'javascript';
+		editor.setOption("theme", 'dreamcode');
+		break;
+		
+		case 'rhtml':
+		case 'rb':
+		case 'rjs':
+		case 'erb':
+		cmode = 'ruby';
+
+		break;
+		
+		case 'css':
+		case 'hss':
+		case 'sass':
+		case 'less':
+		case 'ccss':
+		cmode = 'css';
+		break;
+		
+		case 'pl':
+		cmode = 'perl';
+		break;
+		
+		case 'py':
+		cmode = 'python';
+		break;	
+		
+		case 'c':
+		cmode = 'clike';
+		break;	
+
+		case 'xml':
+		case 'rss':
+		case 'svg':
+		case 'dtd':
+        case 'xul':
+		cmode = 'xml';
+		break;
+		
+		case 'jpg':
+		case 'gif':
+		case 'bmp':
+		case 'tif':
+		case 'png':
+		cmode = 'text';
+		break;
+		
+		}	 
+	 
+	 editor.setOption("mode", cmode);
+	}
+    </script>
+  </body>
+</html>
